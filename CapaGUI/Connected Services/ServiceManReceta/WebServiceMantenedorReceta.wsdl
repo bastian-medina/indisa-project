@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="webGuardarReceta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="receta" type="tns:Receta" />
+            <s:element minOccurs="0" maxOccurs="1" name="idControl" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Receta">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="IdReceta" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Medicamentos" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tratamientos" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="webGuardarRecetaResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="webCambiarEstadoConsulta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="idControl" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rut" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="webCambiarEstadoConsultaResponse">
+        <s:complexType />
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="webGuardarRecetaSoapIn">
+    <wsdl:part name="parameters" element="tns:webGuardarReceta" />
+  </wsdl:message>
+  <wsdl:message name="webGuardarRecetaSoapOut">
+    <wsdl:part name="parameters" element="tns:webGuardarRecetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="webCambiarEstadoConsultaSoapIn">
+    <wsdl:part name="parameters" element="tns:webCambiarEstadoConsulta" />
+  </wsdl:message>
+  <wsdl:message name="webCambiarEstadoConsultaSoapOut">
+    <wsdl:part name="parameters" element="tns:webCambiarEstadoConsultaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceMantenedorRecetaSoap">
+    <wsdl:operation name="webGuardarReceta">
+      <wsdl:input message="tns:webGuardarRecetaSoapIn" />
+      <wsdl:output message="tns:webGuardarRecetaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="webCambiarEstadoConsulta">
+      <wsdl:input message="tns:webCambiarEstadoConsultaSoapIn" />
+      <wsdl:output message="tns:webCambiarEstadoConsultaSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceMantenedorRecetaSoap" type="tns:WebServiceMantenedorRecetaSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="webGuardarReceta">
+      <soap:operation soapAction="http://tempuri.org/webGuardarReceta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="webCambiarEstadoConsulta">
+      <soap:operation soapAction="http://tempuri.org/webCambiarEstadoConsulta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceMantenedorRecetaSoap12" type="tns:WebServiceMantenedorRecetaSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="webGuardarReceta">
+      <soap12:operation soapAction="http://tempuri.org/webGuardarReceta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="webCambiarEstadoConsulta">
+      <soap12:operation soapAction="http://tempuri.org/webCambiarEstadoConsulta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebServiceMantenedorReceta">
+    <wsdl:port name="WebServiceMantenedorRecetaSoap" binding="tns:WebServiceMantenedorRecetaSoap">
+      <soap:address location="https://localhost:44374/WebServiceMantenedorReceta.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceMantenedorRecetaSoap12" binding="tns:WebServiceMantenedorRecetaSoap12">
+      <soap12:address location="https://localhost:44374/WebServiceMantenedorReceta.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

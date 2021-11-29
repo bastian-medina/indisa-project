@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="webGuardarControl">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="control" type="tns:Control" />
+            <s:element minOccurs="0" maxOccurs="1" name="rutP" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="rutM" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Control">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="IdControl" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Causa" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Prioridad" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FrecuenciaCardiaca" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FrecuenciaRespiratoria" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PresionArterial" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SaturacionO2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Temperatura" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Dolor" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Fecha" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Estado" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AuxPaciente" type="tns:Paciente" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Paciente">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RutP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PNombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SNombre" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApellidoP" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ApellidoM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sexo" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaNacimiento" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Nacionalidad" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Anos" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Prevision" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="webGuardarControlResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="webListarHistorial">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="rut" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="webListarHistorialResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="webListarHistorialResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="webListarActivosPantalla">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fila" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="webListarActivosPantallaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="webListarActivosPantallaResult" type="tns:Control" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="webListarActivosPantallaReceta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="fila" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="webListarActivosPantallaRecetaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="webListarActivosPantallaRecetaResult" type="tns:Control" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="webListarActivos">
+        <s:complexType />
+      </s:element>
+      <s:element name="webListarActivosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="webListarActivosResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="webListarActivosReceta">
+        <s:complexType />
+      </s:element>
+      <s:element name="webListarActivosRecetaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="webListarActivosRecetaResult">
+              <s:complexType>
+                <s:sequence>
+                  <s:element ref="s:schema" />
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="webGuardarControlSoapIn">
+    <wsdl:part name="parameters" element="tns:webGuardarControl" />
+  </wsdl:message>
+  <wsdl:message name="webGuardarControlSoapOut">
+    <wsdl:part name="parameters" element="tns:webGuardarControlResponse" />
+  </wsdl:message>
+  <wsdl:message name="webListarHistorialSoapIn">
+    <wsdl:part name="parameters" element="tns:webListarHistorial" />
+  </wsdl:message>
+  <wsdl:message name="webListarHistorialSoapOut">
+    <wsdl:part name="parameters" element="tns:webListarHistorialResponse" />
+  </wsdl:message>
+  <wsdl:message name="webListarActivosPantallaSoapIn">
+    <wsdl:part name="parameters" element="tns:webListarActivosPantalla" />
+  </wsdl:message>
+  <wsdl:message name="webListarActivosPantallaSoapOut">
+    <wsdl:part name="parameters" element="tns:webListarActivosPantallaResponse" />
+  </wsdl:message>
+  <wsdl:message name="webListarActivosPantallaRecetaSoapIn">
+    <wsdl:part name="parameters" element="tns:webListarActivosPantallaReceta" />
+  </wsdl:message>
+  <wsdl:message name="webListarActivosPantallaRecetaSoapOut">
+    <wsdl:part name="parameters" element="tns:webListarActivosPantallaRecetaResponse" />
+  </wsdl:message>
+  <wsdl:message name="webListarActivosSoapIn">
+    <wsdl:part name="parameters" element="tns:webListarActivos" />
+  </wsdl:message>
+  <wsdl:message name="webListarActivosSoapOut">
+    <wsdl:part name="parameters" element="tns:webListarActivosResponse" />
+  </wsdl:message>
+  <wsdl:message name="webListarActivosRecetaSoapIn">
+    <wsdl:part name="parameters" element="tns:webListarActivosReceta" />
+  </wsdl:message>
+  <wsdl:message name="webListarActivosRecetaSoapOut">
+    <wsdl:part name="parameters" element="tns:webListarActivosRecetaResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceMantenedorControlSoap">
+    <wsdl:operation name="webGuardarControl">
+      <wsdl:input message="tns:webGuardarControlSoapIn" />
+      <wsdl:output message="tns:webGuardarControlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="webListarHistorial">
+      <wsdl:input message="tns:webListarHistorialSoapIn" />
+      <wsdl:output message="tns:webListarHistorialSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="webListarActivosPantalla">
+      <wsdl:input message="tns:webListarActivosPantallaSoapIn" />
+      <wsdl:output message="tns:webListarActivosPantallaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="webListarActivosPantallaReceta">
+      <wsdl:input message="tns:webListarActivosPantallaRecetaSoapIn" />
+      <wsdl:output message="tns:webListarActivosPantallaRecetaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="webListarActivos">
+      <wsdl:input message="tns:webListarActivosSoapIn" />
+      <wsdl:output message="tns:webListarActivosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="webListarActivosReceta">
+      <wsdl:input message="tns:webListarActivosRecetaSoapIn" />
+      <wsdl:output message="tns:webListarActivosRecetaSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceMantenedorControlSoap" type="tns:WebServiceMantenedorControlSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="webGuardarControl">
+      <soap:operation soapAction="http://tempuri.org/webGuardarControl" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="webListarHistorial">
+      <soap:operation soapAction="http://tempuri.org/webListarHistorial" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="webListarActivosPantalla">
+      <soap:operation soapAction="http://tempuri.org/webListarActivosPantalla" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="webListarActivosPantallaReceta">
+      <soap:operation soapAction="http://tempuri.org/webListarActivosPantallaReceta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="webListarActivos">
+      <soap:operation soapAction="http://tempuri.org/webListarActivos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="webListarActivosReceta">
+      <soap:operation soapAction="http://tempuri.org/webListarActivosReceta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceMantenedorControlSoap12" type="tns:WebServiceMantenedorControlSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="webGuardarControl">
+      <soap12:operation soapAction="http://tempuri.org/webGuardarControl" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="webListarHistorial">
+      <soap12:operation soapAction="http://tempuri.org/webListarHistorial" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="webListarActivosPantalla">
+      <soap12:operation soapAction="http://tempuri.org/webListarActivosPantalla" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="webListarActivosPantallaReceta">
+      <soap12:operation soapAction="http://tempuri.org/webListarActivosPantallaReceta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="webListarActivos">
+      <soap12:operation soapAction="http://tempuri.org/webListarActivos" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="webListarActivosReceta">
+      <soap12:operation soapAction="http://tempuri.org/webListarActivosReceta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebServiceMantenedorControl">
+    <wsdl:port name="WebServiceMantenedorControlSoap" binding="tns:WebServiceMantenedorControlSoap">
+      <soap:address location="https://localhost:44374/WebServiceMantenedorControl.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceMantenedorControlSoap12" binding="tns:WebServiceMantenedorControlSoap12">
+      <soap12:address location="https://localhost:44374/WebServiceMantenedorControl.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
